@@ -9,7 +9,7 @@
 )
 
 #### 安装
-推荐使用npm安装：
+使用npm安装：
 ```
 npm i native-jsbridge
 ```

@@ -1,6 +1,6 @@
 {
   "name": "native-jsbridge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "js plugin for between H5 and Native",
   "main": "index.umd.js",
   "module": "index.esm.js",
@@ -19,7 +19,10 @@
   },
   "keywords": [
     "rollup",
-    "typescript"
+    "typescript",
+    "Native",
+    "JSBridge",
+    "H5"
   ],
   "author": "zhuxian",
   "license": "MIT",
