@@ -10,7 +10,8 @@
     "clean": "rimraf ./lib",
     "lint": "eslint --fix --ext .ts,.tsx,.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run clean && cpy ./package.json ./lib && cpy ./src/typings.d.ts ./lib && npm run lint && rollup --config config/rollup.config.prod.js --watch"
+    "copy": "cpy ./package.json ./lib && cpy ./src/typings.d.ts ./lib ",
+    "build": "npm run clean && npm run copy && npm run lint && rollup --config config/rollup.config.prod.js --watch"
   },
   "repository": {
     "type": "git",
