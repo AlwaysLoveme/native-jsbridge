@@ -28,7 +28,7 @@ const plugins = [
   }),
   // 设置路径别名
   alias({
-    entries: [{ find: "@", replacement: "../src" }],
+    entries: [{ find: "@", replacement: "../src/" }],
   }),
   postcss({
     plugins: [autoprefixer, cssnao],

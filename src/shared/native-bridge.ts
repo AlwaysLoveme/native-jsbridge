@@ -1,13 +1,14 @@
 import { getDevice } from "./getDevice";
+import { Callback, CallNativeOption } from "../types/bridge";
 
-const jsbridge = function (callback: JSBridge.Callback) {
-  if (window.WebViewJavascriptBridge) {
-    return callback(window.WebViewJavascriptBridge);
+const jsbridge = function (callback: Callback) {
+  if ((window as any).WebViewJavascriptBridge) {
+    return callback((window as any).WebViewJavascriptBridge);
   } else {
     document.addEventListener(
       "WebViewJavascriptBridgeReady",
       function () {
-        callback(window.WebViewJavascriptBridge);
+        callback((window as any).WebViewJavascriptBridge);
       },
       false
     );
@@ -15,11 +16,11 @@ const jsbridge = function (callback: JSBridge.Callback) {
   if (getDevice() === "ios") {
     // old ios method
     setTimeout(function () {
-      if (window.WVJBCallbacks) {
-        return window.WVJBCallbacks.push(callback);
+      if ((window as any).WVJBCallbacks) {
+        return (window as any).WVJBCallbacks.push(callback);
       }
     }, 500);
-    window.WVJBCallbacks = [callback];
+    (window as any).WVJBCallbacks = [callback];
     const WVJBIframe = document.createElement("iframe");
     WVJBIframe.style.display = "none";
     WVJBIframe.src = "wvjbscheme://__BRIDGE_LOADED__";
@@ -61,7 +62,7 @@ if (getDevice() === "android") {
  * callback: 回掉方法
  * @return {[type]}
  */
-function bridgeCallHandler(option: JSBridge.CallNativeOption) {
+function bridgeCallHandler(option: CallNativeOption) {
   jsbridge(function (bridge) {
     bridge.callHandler?.(
       option.method,
@@ -76,10 +77,8 @@ function bridgeCallHandler(option: JSBridge.CallNativeOption) {
 }
 
 //原生调js
-export const bridgeRegisterHandler = function (
-  option: JSBridge.CallNativeOption
-) {
-  window.jsbridge(function (bridge) {
+export const bridgeRegisterHandler = function (option: CallNativeOption) {
+  jsbridge(function (bridge) {
     bridge.registerHandler?.(option.method, function (data, responseCallback) {
       if (option.callback) {
         option.callback(data);
@@ -97,7 +96,7 @@ export const bridgeRegisterHandler = function (
  *    callback:[Function]
  * }
  */
-export const callNative = function (option: JSBridge.CallNativeOption) {
+export const callNative = function (option: CallNativeOption) {
   bridgeCallHandler({
     method: option.method,
     data: option.data,
