@@ -1,16 +1,16 @@
 {
   "name": "native-jsbridge",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "js plugin for between H5 and Native",
-  "main": "index.umd.js",
-  "module": "index.esm.js",
-  "typings": "typings.d.ts",
+  "main": "lib/index.umd.js",
+  "module": "lib/index.esm.js",
+  "typings": "lib/typings.d.ts",
   "files": ["lib"],
   "scripts": {
     "clean": "rimraf ./lib",
     "lint": "eslint --fix --ext .ts,.tsx,.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "copy": "cpy ./package.json ./lib && cpy ./src/typings.d.ts ./lib ",
+    "copy": "cpy ./src/typings.d.ts ./lib",
     "build": "npm run clean && npm run copy && npm run lint && rollup --config config/rollup.config.prod.js --watch"
   },
   "repository": {
