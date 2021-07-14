@@ -1,5 +1,5 @@
 {
-  "name": "rollup-typescript-template",
+  "name": "native-jsbridge",
   "version": "1.0.0",
   "description": "template for rollup with typescript",
   "main": "index.umd.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlwaysLoveme/rollup-typescript-template.git"
+    "url": "git+https://github.com/AlwaysLoveme/native-jsbridge.git"
   },
   "keywords": [
     "rollup",
@@ -24,9 +24,9 @@
   "author": "zhuxian",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AlwaysLoveme/rollup-typescript-template/issues"
+    "url": "https://github.com/AlwaysLoveme/native-jsbridge/issues"
   },
-  "homepage": "https://github.com/AlwaysLoveme/rollup-typescript-template#readme",
+  "homepage": "https://github.com/AlwaysLoveme/native-jsbridge#readme",
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/plugin-transform-runtime": "^7.14.5",
