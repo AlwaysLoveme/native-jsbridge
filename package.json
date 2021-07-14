@@ -1,7 +1,7 @@
 {
   "name": "native-jsbridge",
   "version": "1.0.0",
-  "description": "template for rollup with typescript",
+  "description": "js plugin for between H5 and Native",
   "main": "index.umd.js",
   "module": "index.esm.js",
   "typings": "typings.d.ts",
