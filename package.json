@@ -1,0 +1,23 @@
+{
+  "name": "rollup-typescript-template",
+  "version": "1.0.0",
+  "description": "template for rollup with typescript",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlwaysLoveme/rollup-typescript-template.git"
+  },
+  "keywords": [
+    "rollup",
+    "typescript"
+  ],
+  "author": "zhuxian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlwaysLoveme/rollup-typescript-template/issues"
+  },
+  "homepage": "https://github.com/AlwaysLoveme/rollup-typescript-template#readme"
+}
