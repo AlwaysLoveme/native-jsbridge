@@ -25,7 +25,7 @@ declare namespace JSBridge {
   }
   export interface CallNativeOption {
     method: string;
-    data: Record<string, unknown>;
+    data?: Record<string, unknown>;
     callback: (arg: unknown) => void;
   }
 }
