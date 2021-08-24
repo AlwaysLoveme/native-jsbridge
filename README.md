@@ -11,7 +11,7 @@
 #### 安装
 使用npm安装：
 ```
-npm i native-jsbridge
+npm install native-jsbridge --save-dev
 ```
 #### 使用
 1. js调用原生方法
@@ -32,6 +32,7 @@ import { bridgeRegisterHandler } from "native-jsbridge";
 
 bridgeRegisterHandler({
     method: "exampleMethod",
+    data: {option: 'xxxxx'}, // 原生那边回调可以拿到的参数数据
     callback(data){
         console.log("原生传递给前端的data: " + data);
     }
