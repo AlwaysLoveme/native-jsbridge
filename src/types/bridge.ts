@@ -18,3 +18,10 @@ export interface CallNativeOption {
   data?: Record<string, unknown>;
   callback: (arg: unknown) => void;
 }
+export interface CustomWindow extends Window {
+  WebViewJavascriptBridge: any;
+  WKWebViewJavascriptBridge: any;
+  WVJBCallbacks: Callback[];
+  WKWVJBCallbacks: Callback[];
+  webkit: any;
+}

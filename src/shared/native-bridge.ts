@@ -1,14 +1,16 @@
 import { getDevice } from "./getDevice";
-import { Callback, CallNativeOption } from "../types/bridge";
+import { Callback, CallNativeOption, CustomWindow } from "../types/bridge";
+
+declare const window: CustomWindow;
 
 const jsbridge = function (callback: Callback) {
-  if ((window as any).WebViewJavascriptBridge) {
-    return callback((window as any).WebViewJavascriptBridge);
+  if (window.WebViewJavascriptBridge) {
+    return callback(window.WebViewJavascriptBridge);
   } else {
     document.addEventListener(
       "WebViewJavascriptBridgeReady",
       function () {
-        callback((window as any).WebViewJavascriptBridge);
+        callback(window.WebViewJavascriptBridge);
       },
       false
     );
@@ -16,11 +18,11 @@ const jsbridge = function (callback: Callback) {
   if (getDevice() === "ios") {
     // old ios method
     setTimeout(function () {
-      if ((window as any).WVJBCallbacks) {
-        return (window as any).WVJBCallbacks.push(callback);
+      if (window.WVJBCallbacks) {
+        return window.WVJBCallbacks.push(callback);
       }
     }, 500);
-    (window as any).WVJBCallbacks = [callback];
+    window.WVJBCallbacks = [callback];
     const WVJBIframe = document.createElement("iframe");
     WVJBIframe.style.display = "none";
     WVJBIframe.src = "wvjbscheme://__BRIDGE_LOADED__";
@@ -28,18 +30,15 @@ const jsbridge = function (callback: Callback) {
     setTimeout(function () {
       document.documentElement.removeChild(WVJBIframe);
     }, 0);
-
     // new ios method ---> for WKWebview
-    // if ((window as any).WKWebViewJavascriptBridge) {
-    //   return callback((window as any).WKWebViewJavascriptBridge);
+    // if (window.WKWebViewJavascriptBridge) {
+    //   return callback(window.WKWebViewJavascriptBridge);
     // }
-    // if ((window as any).WKWVJBCallbacks) {
-    //   return (window as any).WKWVJBCallbacks.push(callback);
+    // if (window.WKWVJBCallbacks) {
+    //   return window.WKWVJBCallbacks.push(callback);
     // }
-    // (window as any).WKWVJBCallbacks = [callback];
-    // (
-    //   window as any
-    // ).webkit.messageHandlers.iOS_Native_InjectJavascript.postMessage(null);
+    // window.WKWVJBCallbacks = [callback];
+    // window.webkit.messageHandlers.iOS_Native_InjectJavascript.postMessage(null);
   }
 };
 
