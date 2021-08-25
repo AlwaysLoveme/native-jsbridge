@@ -16,7 +16,7 @@ export interface CallbackArgs {
 export interface CallNativeOption {
   method: string;
   data?: Record<string, unknown>;
-  callback: (arg: unknown) => void;
+  callback?: (arg: unknown) => void;
 }
 export interface CustomWindow extends Window {
   WebViewJavascriptBridge: any;

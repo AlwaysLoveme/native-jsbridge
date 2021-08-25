@@ -1,6 +1,6 @@
 {
   "name": "native-jsbridge",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "js plugin for between H5 and Native",
   "main": "lib/index.umd.js",
   "module": "lib/index.esm.js",
